@@ -21,4 +21,4 @@ Der HackRF funktioniert immer noch nicht. :(
 
 Vielleicht hilft es einem anderen
 
-Viele Spaß damit!
+Viel Spaß damit!
