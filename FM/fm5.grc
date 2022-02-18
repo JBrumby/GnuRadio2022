@@ -45,7 +45,7 @@ blocks:
     start: '0'
     step: '1'
     stop: '47'
-    value: '0'
+    value: '24'
     widget: counter_slider
   states:
     bus_sink: false
@@ -99,7 +99,7 @@ blocks:
     start: '0'
     step: '1'
     stop: '40'
-    value: '0'
+    value: '20'
     widget: counter_slider
   states:
     bus_sink: false
@@ -119,7 +119,7 @@ blocks:
     rangeType: float
     start: '0'
     step: '1'
-    stop: '14'
+    stop: '13'
     value: '0'
     widget: counter_slider
   states:
@@ -159,7 +159,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [96, 3244.0]
+    coordinate: [40, 3596.0]
     rotation: 0
     state: true
 - name: analog_wfm_rcv_0
@@ -176,7 +176,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [88, 2636.0]
+    coordinate: [40, 2988.0]
     rotation: 0
     state: true
 - name: audio_sink_0
@@ -193,14 +193,14 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [112, 3884.0]
+    coordinate: [64, 4236.0]
     rotation: 0
     state: true
 - name: blocks_correctiq_0
   id: blocks_correctiq
   parameters:
     affinity: ''
-    alias: ''
+    alias: DC
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
@@ -208,7 +208,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [384, 1944.0]
+    coordinate: [336, 1768.0]
     rotation: 0
     state: enabled
 - name: blocks_multiply_const_xx_0
@@ -226,7 +226,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [88, 3380.0]
+    coordinate: [40, 3732.0]
     rotation: 0
     state: true
 - name: low_pass_filter_0
@@ -250,7 +250,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [760, 2076.0]
+    coordinate: [760, 2492.0]
     rotation: 0
     state: true
 - name: note_0
@@ -304,7 +304,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [376, 2636.0]
+    coordinate: [328, 2988.0]
     rotation: 0
     state: true
 - name: note_11
@@ -318,7 +318,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1184, 2484.0]
+    coordinate: [1000, 2876.0]
     rotation: 0
     state: true
 - name: note_12
@@ -334,7 +334,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [376, 2884.0]
+    coordinate: [328, 3236.0]
     rotation: 0
     state: true
 - name: note_13
@@ -348,7 +348,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [344, 3380.0]
+    coordinate: [296, 3732.0]
     rotation: 0
     state: true
 - name: note_14
@@ -362,7 +362,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [360, 3876.0]
+    coordinate: [312, 4228.0]
     rotation: 0
     state: true
 - name: note_15
@@ -370,20 +370,22 @@ blocks:
   parameters:
     alias: ''
     comment: "It is not necessary to identify the SDR if only one is connected to\
-      \ the processing board. For the gains, it is necessary to make tests to find\
-      \ the good values according to the model of SDR.\n\nNote On Hack RF Gains\n\
+      \ the \nprocessing board. For the gains, it is necessary to make tests to find\
+      \ \nthe good values according to the model of SDR.\n\nNote On Hack RF Gains\n\
       HackRF One provides:\nRX : three different analog gain controls\nRF (\u201C\
       amp\u201D, 0 or 14 dB),\nIF (\u201Clna\u201D, 0 to 40 dB in 8 dB steps),\nbaseband\
       \ (\u201Cvga\u201D, 0 to 62 dB in 2 dB steps)\nTX : two gain controls\nRF (0\
       \ or 14 dB) ,\nIF (0 to 47 dB in 1 dB steps)\n\n(https://f1atb.fr/index.php/2020/08/06/hackrf-orange-pi-gnuradio-setup/)\n\
       \nAlle Verst\xE4rkungen rf, f und bb auf 0 bringen erste Erfolge\n\nff: 0\n\
-      if 40\nbb 0\n\nfunktioniert!"
+      if 20\nbb 24\nAussderm liegt mein hackrf sehr neben der Spur ungef\xE4hr 700khz\
+      \ ??, Jetzt geht es.\nfunktioniert!\neine RF = 14 erzeugt KEIEN Verst\xE4rkung\
+      \ bei mir, sondern es rauscht nur. Das heist rg geht bei nur von 0-13"
     note: ''
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [280, 1980.0]
+    coordinate: [280, 1916.0]
     rotation: 0
     state: true
 - name: note_16
@@ -391,14 +393,17 @@ blocks:
   parameters:
     alias: ''
     comment: "Remove DC-Spike ist die L\xF6sung \xFCberhaupt etwas auf der centerfrequenz\
-      \ zu emofangen.\nd.b. Meine Konzept ohne Mischer mit dm man einen Frequenzoffset\
-      \ einstellt hat mir das Bein gestellt.\n\nHeureka"
+      \ \nzu emofangen. d.b. Meine Konzept ohne Mischer, der einen  \nFrequenzoffset\
+      \ neben der Centerfrequenz einstellt hat, mir das Bein gestellt.\n\nhttps://www.rtl-sdr.com/wp-content/uploads/2017/02/Getting-rid-of-that-center-frequency-spike-in-gnuradio_07.pdf\n\
+      \nHeureka\n\nDiese L\xF6sung gen\xFCgt aber nicht, um dden Empfang hier v\xF6\
+      lling st\xFCrungsfrei \nzu machen. dazu muss mann neben die Null-Herz Stelle\
+      \ abstimmen."
     note: ''
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [392, 1892.0]
+    coordinate: [488, 1724.0]
     rotation: 0
     state: true
 - name: note_2
@@ -545,7 +550,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [984, 2076.0]
+    coordinate: [992, 2500.0]
     rotation: 0
     state: true
 - name: note_9
@@ -801,7 +806,7 @@ blocks:
     gain7: '10'
     gain8: '10'
     gain9: '10'
-    gain_mode0: '0'
+    gain_mode0: 'True'
     gain_mode1: 'False'
     gain_mode10: 'False'
     gain_mode11: 'False'
@@ -1003,7 +1008,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [328, 3548.0]
+    coordinate: [280, 3900.0]
     rotation: 0
     state: true
 - name: qtgui_sink_x_0
@@ -1032,7 +1037,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [720, 1828.0]
+    coordinate: [736, 2300.0]
     rotation: 0
     state: true
 - name: qtgui_waterfall_sink_x_0
@@ -1093,7 +1098,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [976, 2484.0]
+    coordinate: [752, 2884.0]
     rotation: 0
     state: disabled
 - name: rational_resampler_xxx_0
@@ -1113,7 +1118,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [88, 2884.0]
+    coordinate: [40, 3236.0]
     rotation: 0
     state: true
 - name: rtlsdr_source_0
@@ -1470,7 +1475,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [32, 2220.0]
+    coordinate: [24, 2532.0]
     rotation: 0
     state: disabled
 - name: soapy_plutosdr_source_0
@@ -1492,7 +1497,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [80, 1844.0]
+    coordinate: [24, 2388.0]
     rotation: 0
     state: disabled
 
