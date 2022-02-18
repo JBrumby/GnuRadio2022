@@ -32,6 +32,7 @@ jegliche Grundlagenschaltungen für den hackRF sind sinnlos, wenn der Hinweis au
 Experimenten ist die rf-Gain bisher ohne Bedeutung.
 - Wenn die Gain zu hoch eingestllt ist schwingt der rf-Verstärker, das Ergebnis ist dasselbe wie kein Empfang. Man sieht
 nichts im Waterfall und es rauscht nur, als ob das Band leer ist.
+- Der DC-Spike muss mit einem Block "IQ-Correction" beseitigt werden, weil sonst der Empfänger zugestopft ist.
 
 für meinen Pluto gilt: 
 -----------------------
