@@ -10,14 +10,12 @@ der Code funtkioniert mit:
 
 - ADALM Pluto 
 - RTL-SDR
+- HackRF (Es gab ein Problem mit der Verstärkung und mit der Frequenzgenauigkeit), deshalb hat bi mir gnuradio nie funktioniert.)
 
 unter:
 GnuRadio 3.9.5
 
 auf einem Raspberry Pi 400.
-
-Der HackRF funktioniert immer noch nicht. :(
-
 
 Vielleicht hilft es einem anderen
 
