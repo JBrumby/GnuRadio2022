@@ -11,3 +11,5 @@ und dass bei einem sehr starten Lokalsender.
 Hat jetzt mein hackRF eine Macke oder bediene ich ihn falsch?
 - Außerdemm geht bei nur RF-Gain 0-13. Bei 14 rauscht es nur noch und verstärt nicht.
 
+Ich benötige annscheinend die TCXO-Erweiterung, damit mir so etwas nicht ieder passiert.
+
