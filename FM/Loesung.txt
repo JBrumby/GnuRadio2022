@@ -1,0 +1,13 @@
+Pluto und rtl.sdr funktiioniereń einwandfrei.
+
+Warum funktionierte der HackRF nicht
+- Er liegt 70KHz neben der Empfangsfrequenz, deshalb zeigt er nichts an.
+- Die RF, IF, BB -Gain mussten auf Null gesetzt werden, dann hörte ich zu ersten mal etwas, 
+trotz der danebenleigenden Frequenz.
+- Bei Osmocom Source ist anscheinend ein Fehler bei der Einstellung Gainmode:
+wird ein Boolean erwartet. Die Eingabe manaell und automatik erstellen aber keine booleanwerte???
+- mit der Einstellung RF = 0, IF = 20 und BB = 24 erreiche ch den besten Empfang.
+und dass bei einem sehr starten Lokalsender.  
+Hat jetzt mein hackRF eine Macke oder bediene ich ihn falsch?
+- Außerdemm geht bei nur RF-Gain 0-13. Bei 14 rauscht es nur noch und verstärt nicht.
+

@@ -33,6 +33,27 @@ options:
     state: enabled
 
 blocks:
+- name: bbamp
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: ''
+    label: "Baseband-Verst\xE4rkung"
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: float
+    start: '0'
+    step: '1'
+    stop: '47'
+    value: '0'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [2112, 1868.0]
+    rotation: 0
+    state: true
 - name: freq
   id: variable_qtgui_range
   parameters:
@@ -43,7 +64,7 @@ blocks:
     orient: QtCore.Qt.Horizontal
     rangeType: float
     start: 88e6
-    step: 10000 * (108-88)
+    step: 1e4
     stop: 108e6
     value: freq1
     widget: counter_slider
@@ -58,12 +79,54 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: 89.9e6
+    value: 89.0e6
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
     coordinate: [96, 1156.0]
+    rotation: 0
+    state: true
+- name: ifamp
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: ''
+    label: "IF Zwischenfrequenz Verst\xE4rkung"
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: float
+    start: '0'
+    step: '1'
+    stop: '40'
+    value: '0'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1960, 1868.0]
+    rotation: 0
+    state: true
+- name: rfamp
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: ''
+    label: "Eingangsverst\xE4rkung"
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: float
+    start: '0'
+    step: '1'
+    stop: '14'
+    value: '0'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1808, 1868.0]
     rotation: 0
     state: true
 - name: samp_rate
@@ -133,6 +196,21 @@ blocks:
     coordinate: [112, 3884.0]
     rotation: 0
     state: true
+- name: blocks_correctiq_0
+  id: blocks_correctiq
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [384, 1944.0]
+    rotation: 0
+    state: enabled
 - name: blocks_multiply_const_xx_0
   id: blocks_multiply_const_xx
   parameters:
@@ -285,6 +363,42 @@ blocks:
     bus_source: false
     bus_structure: null
     coordinate: [360, 3876.0]
+    rotation: 0
+    state: true
+- name: note_15
+  id: note
+  parameters:
+    alias: ''
+    comment: "It is not necessary to identify the SDR if only one is connected to\
+      \ the processing board. For the gains, it is necessary to make tests to find\
+      \ the good values according to the model of SDR.\n\nNote On Hack RF Gains\n\
+      HackRF One provides:\nRX : three different analog gain controls\nRF (\u201C\
+      amp\u201D, 0 or 14 dB),\nIF (\u201Clna\u201D, 0 to 40 dB in 8 dB steps),\nbaseband\
+      \ (\u201Cvga\u201D, 0 to 62 dB in 2 dB steps)\nTX : two gain controls\nRF (0\
+      \ or 14 dB) ,\nIF (0 to 47 dB in 1 dB steps)\n\n(https://f1atb.fr/index.php/2020/08/06/hackrf-orange-pi-gnuradio-setup/)\n\
+      \nAlle Verst\xE4rkungen rf, f und bb auf 0 bringen erste Erfolge\n\nff: 0\n\
+      if 40\nbb 0\n\nfunktioniert!"
+    note: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [280, 1980.0]
+    rotation: 0
+    state: true
+- name: note_16
+  id: note
+  parameters:
+    alias: ''
+    comment: "Remove DC-Spike ist die L\xF6sung \xFCberhaupt etwas auf der centerfrequenz\
+      \ zu emofangen.\nd.b. Meine Konzept ohne Mischer mit dm man einen Frequenzoffset\
+      \ einstellt hat mir das Bein gestellt.\n\nHeureka"
+    note: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [392, 1892.0]
     rotation: 0
     state: true
 - name: note_2
@@ -485,8 +599,8 @@ blocks:
     ant7: ''
     ant8: ''
     ant9: ''
-    args: '""'
-    bb_gain0: '20'
+    args: hackrf=0
+    bb_gain0: bbamp
     bb_gain1: '20'
     bb_gain10: '20'
     bb_gain11: '20'
@@ -655,7 +769,7 @@ blocks:
     freq7: 100e6
     freq8: 100e6
     freq9: 100e6
-    gain0: '40'
+    gain0: rfamp
     gain1: '10'
     gain10: '10'
     gain11: '10'
@@ -687,7 +801,7 @@ blocks:
     gain7: '10'
     gain8: '10'
     gain9: '10'
-    gain_mode0: 'False'
+    gain_mode0: '0'
     gain_mode1: 'False'
     gain_mode10: 'False'
     gain_mode11: 'False'
@@ -719,7 +833,7 @@ blocks:
     gain_mode7: 'False'
     gain_mode8: 'False'
     gain_mode9: 'False'
-    if_gain0: '40'
+    if_gain0: ifamp
     if_gain1: '20'
     if_gain10: '20'
     if_gain11: '20'
@@ -788,7 +902,7 @@ blocks:
     nchan: '1'
     num_mboards: '1'
     sample_rate: samp_rate
-    sync: pc_clock
+    sync: sync
     time_source0: ''
     time_source1: ''
     time_source2: ''
@@ -804,7 +918,7 @@ blocks:
     bus_structure: null
     coordinate: [32, 1964.0]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: qtgui_histogram_sink_x_0
   id: qtgui_histogram_sink_x
   parameters:
@@ -913,12 +1027,12 @@ blocks:
     showports: 'False'
     showrf: 'False'
     type: complex
-    wintype: window.WIN_BLACKMAN_hARRIS
+    wintype: window.WIN_HAMMING
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [712, 1660.0]
+    coordinate: [720, 1828.0]
     rotation: 0
     state: true
 - name: qtgui_waterfall_sink_x_0
@@ -1039,7 +1153,7 @@ blocks:
     ant7: ''
     ant8: ''
     ant9: ''
-    args: '""'
+    args: '"rtl=0"'
     bb_gain0: '20'
     bb_gain1: '20'
     bb_gain10: '20'
@@ -1378,18 +1492,19 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [72, 1836.0]
+    coordinate: [80, 1844.0]
     rotation: 0
-    state: enabled
+    state: disabled
 
 connections:
 - [analog_wfm_rcv_0, '0', rational_resampler_xxx_0, '0']
+- [blocks_correctiq_0, '0', low_pass_filter_0, '0']
+- [blocks_correctiq_0, '0', qtgui_sink_x_0, '0']
 - [blocks_multiply_const_xx_0, '0', audio_sink_0, '0']
 - [blocks_multiply_const_xx_0, '0', qtgui_histogram_sink_x_0, '0']
 - [low_pass_filter_0, '0', analog_wfm_rcv_0, '0']
 - [low_pass_filter_0, '0', qtgui_waterfall_sink_x_0, '0']
-- [osmosdr_source_0, '0', low_pass_filter_0, '0']
-- [osmosdr_source_0, '0', qtgui_sink_x_0, '0']
+- [osmosdr_source_0, '0', blocks_correctiq_0, '0']
 - [rational_resampler_xxx_0, '0', blocks_multiply_const_xx_0, '0']
 - [rtlsdr_source_0, '0', low_pass_filter_0, '0']
 - [rtlsdr_source_0, '0', qtgui_sink_x_0, '0']
