@@ -27,7 +27,7 @@ Fazit der bisherigen Eperimente
 für meinen HackRF gilt:
 -----------------------
 jegliche Grundlagenschaltungen für den hackRF sind sinnlos, wenn der Hinweis auf 
-- die fehlende AGC fehlt 
+- die AGC fehlt bei allen SDR außer rtl-sdr 
 - und darausfolgend der Hinweis, dass die if-Gain und bb-gain experimentell eingestellt werden müssen. Bei meinen 
 Experimenten ist die rf-Gain bisher ohne Bedeutung.
 - Wenn die Gain zu hoch eingestllt ist schwingt der rf-Verstärker, das Ergebnis ist dasselbe wie kein Empfang. Man sieht
