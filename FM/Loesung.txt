@@ -2,14 +2,46 @@ Pluto und rtl.sdr funktiioniereń einwandfrei.
 
 Warum funktionierte der HackRF nicht
 - Er liegt 70KHz neben der Empfangsfrequenz, deshalb zeigt er nichts an.
-- Die RF, IF, BB -Gain mussten auf Null gesetzt werden, dann hörte ich zu ersten mal etwas, 
-trotz der danebenleigenden Frequenz.
-- Bei Osmocom Source ist anscheinend ein Fehler bei der Einstellung Gainmode:
-wird ein Boolean erwartet. Die Eingabe manaell und automatik erstellen aber keine booleanwerte???
-- mit der Einstellung RF = 0, IF = 20 und BB = 24 erreiche ch den besten Empfang.
-und dass bei einem sehr starten Lokalsender.  
-Hat jetzt mein hackRF eine Macke oder bediene ich ihn falsch?
-- Außerdemm geht bei nur RF-Gain 0-13. Bei 14 rauscht es nur noch und verstärt nicht.
+   (Diese Aussage ist falsch. Die Frequenz liegt NICHT danemben, sondern der DC-Spike in
+   der Mitte stopft den Demodulator zu, sodass nichts empfangen wird.)
 
-Ich benötige annscheinend die TCXO-Erweiterung, damit mir so etwas nicht ieder passiert.
+- Die RF, IF, BB -Gain mussten auf Null gesetzt werden, dann hörte ich zum ersten mal etwas verrauscht.
+  Ich vermute, die eingestellte Verstärkung hat durch gleichzeitiges anheben des DC-Spikes den Demodulator 
+  zugestopft.
+
+
+- Bei Osmocom Source wird bei der Einstellung des Gainmode: 
+  "manuell" als False = 0 und 
+  "automatic" als true = 1 übeersetzt.
+  D.h. Diese Einstellung sollte nicht "gain mode", sonder "AGC = automatic gain control" heißen.
+  Dadurch wären die erwarteten Werte offensichtlicher und müssten nicht in Logikwwerte übersetzt werden.
+
+- Der HackFR schafft es bei mir nicht bei "gain mode" = automatic, einen Lokalsender vernünftig zu empfangen.
+
+
+- mit der Einstellung RF = 0, IF = 20 und BB = 24 erreiche ch den besten Empfang.
+  und dass bei einem sehr starten Lokalsender.  
+  Hat jetzt mein hackRF eine Macke oder bediene ich ihn falsch?
+- Außerdemm geht bei nur RF-Gain 0-13. Bei 14 rauscht es nur noch und verstärt nicht. 
+  Einstellung rf-gain = 14, also höchste Verstärkung, ergibt auch im FFT-Wasserfall nur undefiniertes Rauschen.
+
+
+- Würde die TCXO-Erweiterung etwas bringen? 
+  Nein, denn der DC-Spike ist mein Problem, weshalb keine Beispielapplikation funktioniert.
+
+- Die Veränderung von rF-Gain verändert nichts, wenn ich sie auf 0 bis 13 einstelle.
+  Bei Einstellung 0 soll die AGC überbrückt sein. Bei 1-14 durch den Verstärker geleitet. 
+
+Neuer Effekt:
+wenn ich RF-Gain auf 14 einstelle, dann rauscht es. Dieses Rauschen entsteht bei Einstellung von rfgain 14.
+Das rauschen verschwindet erst bei Einstellung rfgain=13. Fängt mein Eingangsverstärker bei rfain=14 an zu
+schwingen und beim herunterregeln auf rfgain=12 hört das auf.Das scheint zu beweisen, dass die rf-gain irgendetwas
+macht. Ein Ändern der rfgain hat bei sonst keinen Effekt. Das FFT verändert sich nicht. Die Einstellung gleicht ein
+zu niedrige Einstellung der anderen gain-Regler (= verrauchter Empfang) nicht aus.
+Liegt das am starken FM-Sender, der möglicherweise direkt in den HackRF einstrahlt? Nein, ein abtrennen der Antenne 
+lässt den Empfang veerschwinden.
+
+Wenn Gain-mode=automatic ist, sollte der hackref doch alle Amps automatische einstellen?
+Tut ere aber nicht. auch bei einstellung automatic, kann ich den Empfang mit den 3 Gain-Reglern stören. Verstehe ich 
+das Konzept automatic nicht?
 

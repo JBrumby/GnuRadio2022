@@ -33,6 +33,23 @@ options:
     state: enabled
 
 blocks:
+- name: agc
+  id: variable_qtgui_check_box
+  parameters:
+    comment: ''
+    'false': 'False'
+    gui_hint: ''
+    label: automatic gain Control
+    'true': 'True'
+    type: int
+    value: 'True'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1480, 2132.0]
+    rotation: 0
+    state: true
 - name: bbamp
   id: variable_qtgui_range
   parameters:
@@ -51,7 +68,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [2112, 1868.0]
+    coordinate: [1288, 2128.0]
     rotation: 0
     state: true
 - name: freq
@@ -105,7 +122,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1960, 1868.0]
+    coordinate: [1136, 2128.0]
     rotation: 0
     state: true
 - name: rfamp
@@ -119,14 +136,14 @@ blocks:
     rangeType: float
     start: '0'
     step: '1'
-    stop: '13'
+    stop: '15'
     value: '0'
     widget: counter_slider
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1808, 1868.0]
+    coordinate: [984, 2128.0]
     rotation: 0
     state: true
 - name: samp_rate
@@ -208,7 +225,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [336, 1768.0]
+    coordinate: [312, 1720.0]
     rotation: 0
     state: enabled
 - name: blocks_multiply_const_xx_0
@@ -404,6 +421,21 @@ blocks:
     bus_source: false
     bus_structure: null
     coordinate: [488, 1724.0]
+    rotation: 0
+    state: true
+- name: note_17
+  id: note
+  parameters:
+    alias: ''
+    comment: "Diese Einstsellregler erzeugen Variablen, die in diesem Programm\nnur\
+      \ f\xFCr \"Osmocon Source\" verwendet werden, um dem Problem\ndes nicht funktionierenden\
+      \ Empfangs auf die Spur zu kommen."
+    note: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1712, 2140.0]
     rotation: 0
     state: true
 - name: note_2
@@ -710,7 +742,7 @@ blocks:
     corr7: '0'
     corr8: '0'
     corr9: '0'
-    dc_offset_mode0: '0'
+    dc_offset_mode0: '2'
     dc_offset_mode1: '0'
     dc_offset_mode10: '0'
     dc_offset_mode11: '0'
@@ -806,7 +838,7 @@ blocks:
     gain7: '10'
     gain8: '10'
     gain9: '10'
-    gain_mode0: 'True'
+    gain_mode0: agc
     gain_mode1: 'False'
     gain_mode10: 'False'
     gain_mode11: 'False'
