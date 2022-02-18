@@ -41,3 +41,8 @@ Er funktioniert einfach mit der Grundschlatung und deshalb mit einem Primitiv-Em
 für meinen rtl-sdr gilt; 
 ------------------------
 Erfunktioniert einfach mit der Grundschaltung und deshalb in menem Primitiv-Empfnagskonzept
+
+Persönlliche mile stone:
+========================
+- Ich habe meinen hacck-rf zum ersten mal selbst in eigenen Programme einbinden können. Bisher konnte ich nur Fertig-Programme benutzen
+- Diese Hinweise habe ich leider nirgends gefunden. Sie hätten mir viel Kopfzerbrechen gespart. Deshalb veröffentliche ich sie hier.
