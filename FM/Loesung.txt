@@ -32,6 +32,9 @@ Warum funktionierte der HackRF nicht
 - Die Veränderung von rF-Gain verändert nichts, wenn ich sie auf 0 bis 13 einstelle.
   Bei Einstellung 0 soll die AGC überbrückt sein. Bei 1-14 durch den Verstärker geleitet. 
 
+Empfang ist besser, wenn ich die Centerfrequen 30KHz neben den Sender abstimme.
+Der Hackrf scheint zu wandern. Ich musste die Frequenz nachstellen.
+
 Neuer Effekt:
 wenn ich RF-Gain auf 14 einstelle, dann rauscht es. Dieses Rauschen entsteht bei Einstellung von rfgain 14.
 Das rauschen verschwindet erst bei Einstellung rfgain=13. Fängt mein Eingangsverstärker bei rfain=14 an zu
@@ -45,3 +48,21 @@ Wenn Gain-mode=automatic ist, sollte der hackref doch alle Amps automatische ein
 Tut ere aber nicht. auch bei einstellung automatic, kann ich den Empfang mit den 3 Gain-Reglern stören. Verstehe ich 
 das Konzept automatic nicht?
 
+Beim spielen mit den verschiedenen Gain-Reglern stelle ich fest BasebandGain = BB und IFGain gleicen sich in einem 
+gewissen Maße aus. HF-Gain hat keinen Effekt ausser den Eingangskreis zum Schwngen zu bringen (rauschen und zustopfen)
+Gainmode automatic hat immer noch keinen Effekt.
+
+Internetsuche: wie funktioniert der AGC-Mode?
+Internetsuche war nicht nötig. In der Documentation des "OSMOcom Source"-Moduls wird beschrieben, dass AGC=automatik 
+NUR beim rtl.sdr stick funktioniert! Diese Information hätte ich mir im Quick-Tipp gewünscht. AGC-Experimente kann man 
+sich also getrost sparen, ausser man verwendet genau diesen Empfänger.
+
+Das hat mich viel Zeit gekostet und jahrelang Eperimente verhindert.
+
+Fazit:
+jegliche Grundlagenschaltungen für den hackRF sind sinnlos, wenn der Hinweis auf 
+- die fehlende AGC fehlt 
+- und darusfolgend der Hinweis, dass die if-Gain und bb-gain experimentell eingestellt werden müssen. Bei meinen 
+Experimenten ist die rf-Gain bisher ohne Bedeutung.
+- Wenn die Gain zu hoch eingestllt ist schwingt der rf-Verstärker, das Ergebnis ist dasselbe wie kein Empfang. Man sieht
+nichts im Waterfall und es rauscht nur, als ob das Band leer ist.

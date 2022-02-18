@@ -20,3 +20,23 @@ auf einem Raspberry Pi 400.
 Vielleicht hilft es einem anderen
 
 Viel Spaß damit!
+
+Fazit der bisherigen Eperimente
+================================
+
+für meinen HackRF gilt:
+-----------------------
+jegliche Grundlagenschaltungen für den hackRF sind sinnlos, wenn der Hinweis auf 
+- die fehlende AGC fehlt 
+- und darausfolgend der Hinweis, dass die if-Gain und bb-gain experimentell eingestellt werden müssen. Bei meinen 
+Experimenten ist die rf-Gain bisher ohne Bedeutung.
+- Wenn die Gain zu hoch eingestllt ist schwingt der rf-Verstärker, das Ergebnis ist dasselbe wie kein Empfang. Man sieht
+nichts im Waterfall und es rauscht nur, als ob das Band leer ist.
+
+für meinen Pluto gilt: 
+-----------------------
+Er funktioniert einfach mit der Grundschlatung und deshalb mit einem Primitiv-Empfangskonzept.
+
+für meinen rtl-sdr gilt; 
+------------------------
+Erfunktioniert einfach mit der Grundschaltung und deshalb in menem Primitiv-Empfnagskonzept
